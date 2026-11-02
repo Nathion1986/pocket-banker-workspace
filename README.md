@@ -51,7 +51,6 @@ Android App (WebView + Java Bridge, 短信感知采集)
 - **android-app/**：Android 原生 App（四 Tab：对话 / 总览 / 感知 / 网络），WebView 混合架构 + 短信采集 Bridge
 - **client-sdk/**：Python 客户端 SDK（联调用）
 - **contracts/**：API 契约
-- **AGENTS.md**：团队「AI 全流程协作开发」工程规范存档（六条纪律：文档台账/术语权威源/方案先行/bug 必转测试用例等）
 
 ## 安全设计（纵深防御）
 
