@@ -1,0 +1,886 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PocketBanker Mock C",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/v1/health": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "health"
+          }
+        }
+      }
+    },
+    "/v1/customers/{owner}/accounts": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v1/accounts/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v1/accounts/{id}/transactions": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v1/accounts/{id}/holdings": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v1/accounts/{id}/subscriptions": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v1/accounts/{id}/cards": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v1/accounts/{id}/credit-bills": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v1/products": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v1/outcomes/{key}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v1/reservations/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v1/actions/transfer": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/reserve": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/release": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/capture_reservation": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/refund": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/freeze": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/unfreeze": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/stop_payment": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/purchase": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/redeem": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/apply_card": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/virtual_card": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/card_limits": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/card_payment": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/credit_repay": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/actions/cancel_subscription": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "id",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "idempotencyKey",
+                          "userId",
+                          "accountId",
+                          "params"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v1/outcomes/{key}/cancel": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "compensated"
+          },
+          "409": {
+            "description": "not reversible"
+          }
+        }
+      }
+    }
+  }
+}

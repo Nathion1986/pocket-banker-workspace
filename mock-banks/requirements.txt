@@ -1,0 +1,1 @@
+# Python >=3.12 standard-library HTTP/SQLite implementation; no pip runtime packages.

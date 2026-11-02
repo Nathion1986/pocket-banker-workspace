@@ -1,0 +1,101 @@
+server:
+  port: 8000
+  address: ${SERVER_ADDRESS:127.0.0.1}
+
+spring:
+  application:
+    name: pocket-banker
+  datasource:
+    url: ${POCKET_DB_URL:jdbc:h2:file:./local-data/pocketbanker;MODE=PostgreSQL}
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    hikari:
+      connection-init-sql: SET WRITE_DELAY 0
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    open-in-view: false
+  h2:
+    console:
+      enabled: false
+      path: /h2-console
+
+# Bank 配置
+bank:
+  fineract:
+    base-url: ${FINERACT_BASE_URL:}
+    write-base-url: ${FINERACT_WRITE_BASE_URL:}
+    tenant: ${FINERACT_TENANT:default}
+    username: ${FINERACT_USERNAME:}
+    password: ${FINERACT_PASSWORD:}
+    clients-json: ${FINERACT_CLIENTS_JSON:{}}
+    allow-local-http: ${FINERACT_ALLOW_LOCAL_HTTP:false}
+    timeout-ms: ${FINERACT_TIMEOUT_MS:2000}
+    payment-type-id: ${FINERACT_PAYMENT_TYPE_ID:0}
+  bank-a:
+    base-url: ${BANK_A_URL:http://127.0.0.1:8001}
+  bank-b:
+    base-url: ${BANK_B_URL:http://127.0.0.1:8002}
+  bank-c:
+    base-url: ${BANK_C_URL:http://127.0.0.1:8003}
+
+# LLM 配置（从 secrets/.env 环境变量读取）
+llm:
+  glm:
+    api-key: ${LLM_API_KEY:}
+    base-url: ${LLM_BASE_URL:https://open.bigmodel.cn/api/paas/v4}
+    model: ${LLM_MODEL:glm-4-flash}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    com.pocketbanker: DEBUG
+
+# 未配置用户凭据则拒绝新感知接口；默认不连接真实邮箱/地图。
+perception:
+  users-json: ${PERCEPTION_USERS_JSON:{}}
+  imap-accounts-json: ${PERCEPTION_IMAP_ACCOUNTS_JSON:{}}
+  city-boundaries-path: ${PERCEPTION_CITY_BOUNDARIES_PATH:}
+  workers: 2
+  queue-capacity: 32
+  lease-seconds: 300
+  candidate-days: 30
+  imap-poll-ms: 60000
+
+backend:
+  mode: ${BACKEND_MODE:local-demo}
+  auth-bootstrap-user: ${BACKEND_AUTH_BOOTSTRAP_USER:}
+  auth-bootstrap-key: ${BACKEND_AUTH_BOOTSTRAP_KEY:}
+  auth-mac-key: ${BACKEND_AUTH_MAC_KEY:}
+  vault-key: ${BACKEND_VAULT_KEY:}
+  otp-key: ${BACKEND_OTP_KEY:}
+  mock-service-token: ${MOCK_SERVICE_TOKEN:}
+  model-mode: ${BACKEND_MODEL_MODE:mock}
+  model-timeout-ms: ${BACKEND_MODEL_TIMEOUT_MS:6500}
+  models-json: ${BACKEND_MODELS_JSON:{}}
+  flower-url: ${FLOWER_URL:http://127.0.0.1:8004}
+  cake-url: ${CAKE_URL:http://127.0.0.1:8005}
+  sandbox-mode: ${BACKEND_SANDBOX_MODE:docker}
+  planner:
+    url: ${BACKEND_PLANNER_URL:}
+    api-key: ${BACKEND_PLANNER_API_KEY:}
+    model: ${BACKEND_PLANNER_MODEL:}
+    timeout-ms: ${BACKEND_PLANNER_TIMEOUT_MS:2000}
+  analysis-code:
+    url: ${BACKEND_ANALYSIS_CODE_URL:}
+    api-key: ${BACKEND_ANALYSIS_CODE_API_KEY:}
+    model: ${BACKEND_ANALYSIS_CODE_MODEL:}
+    timeout-ms: ${BACKEND_ANALYSIS_CODE_TIMEOUT_MS:2000}
+  sandbox-python: ${BACKEND_SANDBOX_PYTHON:python3}
+  telegram-token: ${BACKEND_TELEGRAM_TOKEN:}
+  telegram-webhook-key: ${BACKEND_TELEGRAM_WEBHOOK_KEY:}
+  telegram-api-url: ${BACKEND_TELEGRAM_API_URL:https://api.telegram.org}
+
+# Optional structured planning protocol; private values stay locally bound.

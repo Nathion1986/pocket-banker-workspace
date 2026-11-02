@@ -1,0 +1,48 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PocketBanker Mock flower",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/merchant/v1/health": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "health"
+          }
+        }
+      }
+    },
+    "/merchant/v1/orders": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "durable order"
+          }
+        }
+      }
+    },
+    "/merchant/v1/outcomes/{key}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "verified order state"
+          }
+        }
+      }
+    },
+    "/merchant/v1/outcomes/{key}/cancel": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "compensated"
+          },
+          "409": {
+            "description": "not reversible"
+          }
+        }
+      }
+    }
+  }
+}

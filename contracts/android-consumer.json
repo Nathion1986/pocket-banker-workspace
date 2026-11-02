@@ -1,0 +1,278 @@
+{
+  "protocolVersion": "0.4",
+  "identity": "Authorization Bearer; X-Demo-Session is not identity",
+  "cursor": "numeric event id; proposal id is separate in payload",
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/api/messages",
+      "required": [
+        "text",
+        "clientMessageId"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/events"
+    },
+    {
+      "method": "GET",
+      "path": "/api/link-status"
+    },
+    {
+      "method": "POST",
+      "path": "/api/link-code"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/link"
+    },
+    {
+      "method": "GET",
+      "path": "/api/proposals/{id}"
+    },
+    {
+      "method": "POST",
+      "path": "/api/proposals/{id}/decision",
+      "required": [
+        "decision",
+        "version"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/proposals/{id}/verify",
+      "required": [
+        "code",
+        "secondFactor",
+        "version"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/perception"
+    },
+    {
+      "method": "POST",
+      "path": "/api/perception/events/{id}/correction",
+      "required": [
+        "fingerprint",
+        "draft"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/perception/events/{id}/decision",
+      "required": [
+        "fingerprint",
+        "decision"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/perception/sources"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sources",
+      "required": [
+        "kind",
+        "consentId",
+        "consentGranted",
+        "allowedSenders",
+        "expiresAt"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sms",
+      "required": [
+        "sourceId",
+        "externalId",
+        "occurredAt",
+        "sender",
+        "text"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/mail/import",
+      "required": [
+        "sourceId",
+        "externalId",
+        "occurredAt",
+        "sender",
+        "text"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/perception/sources/{id}/collector"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sources/{id}/collector",
+      "required": [
+        "protocolVersion",
+        "deviceId",
+        "platform",
+        "consentEpoch",
+        "sequence",
+        "observedAt",
+        "collectionMode",
+        "permission",
+        "background",
+        "pendingCount"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/perception/sources/{id}/sync"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sources/{id}/sync"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sources/{id}/pause"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sources/{id}/resume"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sources/{id}/revoke"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/perception/sources/{sourceId}/receipts/{id}"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/receipts/{id}/candidate",
+      "required": [
+        "kind",
+        "title"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/profile/persons"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/profile/persons/{id}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/profile/persons/{id}"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/profile/facts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/profile/facts/{id}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/config"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/setup",
+      "required": [
+        "setupKey",
+        "username",
+        "password"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "required": [
+        "username",
+        "password"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login/mfa",
+      "required": [
+        "challengeId",
+        "totp"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/refresh",
+      "required": [
+        "refreshToken"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/logout"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/mfa/enroll",
+      "required": [
+        "password"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/mfa/confirm",
+      "required": [
+        "totp"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/mfa/recover",
+      "required": [
+        "username",
+        "password",
+        "recoveryCode"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/password/change",
+      "required": [
+        "password",
+        "newPassword",
+        "totp"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/proposals/{id}/auth-challenge",
+      "required": [
+        "version"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/proposals/{id}/auth-verify",
+      "required": [
+        "challengeId",
+        "version",
+        "password",
+        "totp"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/overview"
+    }
+  ]
+}

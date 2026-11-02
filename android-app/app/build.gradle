@@ -1,0 +1,24 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'cn.pocketbanker.app'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'cn.pocketbanker.app'
+        minSdk 24
+        targetSdk 35
+        versionCode 4
+        versionName '0.4-account'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        // Emulator localhost maps to host. Set -PapiBase=https://your-demo-domain for devices.
+        buildConfigField 'String', 'API_BASE', '"' + (project.findProperty('apiBase') ?: 'http://10.0.2.2:8765').toString() + '"'
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    buildFeatures { buildConfig true }
+}
+
+dependencies {
+    implementation 'androidx.webkit:webkit:1.17.1'
+    androidTestImplementation 'androidx.test:runner:1.6.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+}

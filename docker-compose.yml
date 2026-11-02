@@ -1,0 +1,76 @@
+services:
+  bank-a:
+    build: {context: ./mock-banks, args: {PROVIDER_DIR: bank-a}}
+    ports: ["127.0.0.1:${PB_PORT_A:-8001}:8001"]
+    environment: &bank-env
+      MOCK_SERVICE_TOKEN: ${MOCK_SERVICE_TOKEN:?set local mock service token}
+      MOCK_ADMIN_TOKEN: ${MOCK_ADMIN_TOKEN:?set local mock admin token}
+      BANK_A_URL: http://bank-a:8001
+      BANK_B_URL: http://bank-b:8002
+      BANK_C_URL: http://bank-c:8003
+    volumes: [bank-a-data:/app/local-data]
+    healthcheck: {test: [CMD, python, -c, "import urllib.request;urllib.request.urlopen('http://localhost:8001/api/v2/health')"], interval: 5s, timeout: 3s, retries: 10}
+  bank-b:
+    build: {context: ./mock-banks, args: {PROVIDER_DIR: bank-b}}
+    ports: ["127.0.0.1:${PB_PORT_B:-8002}:8002"]
+    environment: *bank-env
+    volumes: [bank-b-data:/app/local-data]
+    healthcheck: {test: [CMD, python, -c, "import urllib.request;urllib.request.urlopen('http://localhost:8002/v2/health')"], interval: 5s, timeout: 3s, retries: 10}
+  bank-c:
+    build: {context: ./mock-banks, args: {PROVIDER_DIR: bank-c}}
+    ports: ["127.0.0.1:${PB_PORT_C:-8003}:8003"]
+    environment: *bank-env
+    volumes: [bank-c-data:/app/local-data]
+    healthcheck: {test: [CMD, python, -c, "import urllib.request;urllib.request.urlopen('http://localhost:8003/v1/health')"], interval: 5s, timeout: 3s, retries: 10}
+  flower:
+    build: {context: ./mock-banks, args: {PROVIDER_DIR: flower-shop}}
+    ports: ["127.0.0.1:${PB_PORT_FLOWER:-8004}:8004"]
+    environment: *bank-env
+    volumes: [flower-data:/app/local-data]
+    healthcheck: {test: [CMD, python, -c, "import urllib.request;urllib.request.urlopen('http://localhost:8004/merchant/v1/health')"], interval: 5s, timeout: 3s, retries: 10}
+  cake:
+    build: {context: ./mock-banks, args: {PROVIDER_DIR: cake-shop}}
+    ports: ["127.0.0.1:${PB_PORT_CAKE:-8005}:8005"]
+    environment: *bank-env
+    volumes: [cake-data:/app/local-data]
+    healthcheck: {test: [CMD, python, -c, "import urllib.request;urllib.request.urlopen('http://localhost:8005/merchant/v1/health')"], interval: 5s, timeout: 3s, retries: 10}
+  pocket-banker:
+    build: ./pocket-banker
+    ports: ["127.0.0.1:${PB_PORT_MAIN:-8000}:8000"]
+    environment:
+      MOCK_SERVICE_TOKEN: ${MOCK_SERVICE_TOKEN}
+      BACKEND_VAULT_KEY: ${BACKEND_VAULT_KEY:?set local vault key}
+      BACKEND_OTP_KEY: ${BACKEND_OTP_KEY:?set local OTP key}
+      PERCEPTION_USERS_JSON: ${PERCEPTION_USERS_JSON:?set local user credentials}
+      BACKEND_MODEL_MODE: mock
+      BACKEND_SANDBOX_MODE: docker
+      DOCKER_HOST: unix:///var/run/docker.sock
+      BACKEND_TELEGRAM_TOKEN: ""
+      BACKEND_PLANNER_URL: ""
+      BACKEND_ANALYSIS_CODE_URL: ""
+      PERCEPTION_IMAP_ACCOUNTS_JSON: "{}"
+      BACKEND_CALENDARS_JSON: "{}"
+      BANK_A_URL: http://bank-a:8001
+      BANK_B_URL: http://bank-b:8002
+      BANK_C_URL: http://bank-c:8003
+      FLOWER_URL: http://flower:8004
+      CAKE_URL: http://cake:8005
+    group_add: ["${DOCKER_SOCKET_GID:-0}"]
+    volumes:
+      - main-data:/app/local-data
+      - ${DOCKER_SOCKET_PATH:-/var/run/docker.sock}:/var/run/docker.sock
+
+    depends_on:
+      bank-a: {condition: service_healthy}
+      bank-b: {condition: service_healthy}
+      bank-c: {condition: service_healthy}
+      flower: {condition: service_healthy}
+      cake: {condition: service_healthy}
+    healthcheck: {test: [CMD, bash, -c, "exec 3<>/dev/tcp/localhost/8000 && printf 'GET /api/v1/health HTTP/1.0\r\n\r\n' >&3 && head -n1 <&3 | grep '200'"], interval: 5s, timeout: 3s, retries: 20}
+volumes:
+  bank-a-data: {}
+  bank-b-data: {}
+  bank-c-data: {}
+  flower-data: {}
+  cake-data: {}
+  main-data: {}

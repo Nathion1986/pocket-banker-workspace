@@ -1,0 +1,331 @@
+{
+  "version": "1.4.0",
+  "authentication": "Authorization: Bearer <user-token>",
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/api/v1/chat",
+      "required": [
+        "text",
+        "sessionId",
+        "requestId"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/chat/stream",
+      "required": [
+        "text",
+        "sessionId",
+        "requestId"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/tasks",
+      "required": [
+        "requestId",
+        "nodes",
+        "trigger"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/tasks/{id}"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/tasks/{id}/confirm",
+      "required": [
+        "approved",
+        "version"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/tasks/{id}/verify",
+      "required": [
+        "code",
+        "secondFactor",
+        "version"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/profile/events"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sms",
+      "required": [
+        "sourceId",
+        "externalId",
+        "occurredAt",
+        "sender",
+        "text"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/mail/import",
+      "required": [
+        "sourceId",
+        "externalId",
+        "occurredAt",
+        "sender",
+        "text"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/calendar/ics",
+      "required": [
+        "sourceId",
+        "resourceId",
+        "revision",
+        "timezone"
+      ],
+      "authentication": "source-token"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/events/{id}/postpone",
+      "required": [
+        "until"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/events/{id}/risk-feedback",
+      "required": [
+        "response"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/timeline"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sources/{id}/sync"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/perception/sources/{id}/sync"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sources/{id}/pause"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sources/{id}/resume"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/health",
+      "required": [
+        "sourceId",
+        "externalId",
+        "occurredAt",
+        "steps",
+        "restingPulse"
+      ],
+      "authentication": "source-token"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/health/delete",
+      "required": [
+        "sourceId",
+        "externalId",
+        "revision"
+      ],
+      "authentication": "source-token"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/perception/sources/{id}/collector",
+      "authentication": "Authorization: Bearer <user-token>"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sources/{id}/collector",
+      "authentication": "Authorization: Bearer <source-token>",
+      "required": [
+        "protocolVersion",
+        "deviceId",
+        "platform",
+        "consentEpoch",
+        "sequence",
+        "observedAt",
+        "collectionMode",
+        "permission",
+        "background",
+        "pendingCount"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/calendar/queue",
+      "authentication": "Authorization: Bearer <source-token>",
+      "required": [
+        "sourceId",
+        "externalId",
+        "revision",
+        "kind",
+        "startDate"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/health/queue",
+      "authentication": "Authorization: Bearer <source-token>",
+      "required": [
+        "sourceId",
+        "externalId",
+        "occurredAt",
+        "steps",
+        "restingPulse",
+        "sleepHours",
+        "revision"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/perception/sources/{id}/jobs"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/perception/sources/{id}/jobs/retry"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/perception/sources/{source}/jobs/{id}",
+      "authentication": "Authorization: Bearer <source-token>"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/events/{id}/settlements",
+      "required": [
+        "bank",
+        "accountId",
+        "transactionId",
+        "dueDate"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/channels/telegram"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/channels/telegram"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/channels/telegram/deliveries"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/tasks/{id}/audit"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/config"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/setup",
+      "required": [
+        "setupKey",
+        "username",
+        "password"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "required": [
+        "username",
+        "password"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login/mfa",
+      "required": [
+        "challengeId",
+        "totp"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/refresh",
+      "required": [
+        "refreshToken"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/logout"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/mfa/enroll",
+      "required": [
+        "password"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/mfa/confirm",
+      "required": [
+        "totp"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/mfa/recover",
+      "required": [
+        "username",
+        "password",
+        "recoveryCode"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/password/change",
+      "required": [
+        "password",
+        "newPassword",
+        "totp"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/proposals/{id}/auth-challenge",
+      "required": [
+        "version"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/proposals/{id}/auth-verify",
+      "required": [
+        "challengeId",
+        "version",
+        "password",
+        "totp"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/overview"
+    }
+  ]
+}

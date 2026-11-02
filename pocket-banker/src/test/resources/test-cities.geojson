@@ -1,0 +1,1 @@
+{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"cityCode":"TEST_CITY","cityName":"测试城市（非真实边界）","coordinateSystem":"WGS84"},"geometry":{"type":"Polygon","coordinates":[[[113,22],[115,22],[115,24],[113,24],[113,22]]]}}]}

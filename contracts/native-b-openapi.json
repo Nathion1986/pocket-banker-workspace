@@ -1,0 +1,598 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PocketBanker Mock B",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/v2/health": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "health"
+          }
+        }
+      }
+    },
+    "/v2/customers/{owner}/accounts": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v2/accounts/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v2/accounts/{id}/transactions": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v2/accounts/{id}/holdings": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v2/accounts/{id}/subscriptions": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v2/accounts/{id}/cards": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v2/accounts/{id}/credit-bills": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v2/products": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v2/outcomes/{key}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v2/reservations/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "native resource"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v2/actions/transfer": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/reserve": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/release": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/capture_reservation": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/refund": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/freeze": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/unfreeze": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/stop_payment": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/purchase": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/redeem": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/apply_card": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/virtual_card": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/card_limits": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/card_payment": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/credit_repay": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/actions/cancel_subscription": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "requestKey",
+                  "customerId",
+                  "fromAccount",
+                  "arguments"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "durable outcome"
+          },
+          "409": {
+            "description": "business conflict"
+          }
+        }
+      }
+    },
+    "/v2/outcomes/{key}/cancel": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "compensated"
+          },
+          "409": {
+            "description": "not reversible"
+          }
+        }
+      }
+    }
+  }
+}
