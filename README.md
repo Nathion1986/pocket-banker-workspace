@@ -7,7 +7,7 @@
 
 后端与 5 个 Mock 金融机构已部署公网：
 
-- 服务地址：`https://www.kauson.com`（HTTPS）
+- 服务地址：`https://www.kauson.com/web`（HTTPS · Web 版对话界面，与 App 同源后端）
 - 演示账号：`demo` / `PocketBanker2026`
 - Android App 构建时通过 `-PapiBase=https://www.kauson.com` 指向线上服务（见下文）
 
